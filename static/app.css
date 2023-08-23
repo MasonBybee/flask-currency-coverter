@@ -1,0 +1,20 @@
+.error {
+  background-color: orangered;
+  color: white;
+  display: block;
+  width: 200px;
+  padding: 0.7em;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #24a0ed;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+input {
+  margin: 5px;
+}
