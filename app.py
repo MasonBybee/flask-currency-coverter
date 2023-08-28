@@ -14,6 +14,7 @@ def check_codes(codes):
     for code in codes:
         if code not in currency_codes:
             valid = False
+            session['_flashed_messages'] = f"Not a valid code: {code}"
             flash(f"Not a valid code: {code}", 'error')
     return valid
 

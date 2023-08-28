@@ -1,4 +1,4 @@
-from unittest import TestCase
+from unittest import TestCase, main
 from app import app
 from flask import session
 
@@ -25,7 +25,7 @@ class ConvertTestCase(TestCase):
             }
             response = client.post('/convert', data=data)
             with client.session_transaction() as session:
-                flashed_messages = session['_flashed_messages']
+                flashed_messages = session.get('_flashed_messages', [])
                 self.assertIn('Not a valid code: 123', flashed_messages)
 
 
@@ -35,3 +35,13 @@ class ConvertTestCase(TestCase):
             html = resp.get_data(as_text=True)
             self.assertEqual(resp.status_code, 200)
             self.assertIn('Result:', html)
+
+    # def test_result_page(self):
+    #     with app.test_client() as client:
+    #         resp = client.get('/result')
+    #         html = resp.get_data(as_text=True)
+    #         self.assertEqual(resp.status_code, 200)
+    #         self.assertIn('<h1>Currency Converter</h1>', html)
+
+if __name__ == '__main__':
+    main()
